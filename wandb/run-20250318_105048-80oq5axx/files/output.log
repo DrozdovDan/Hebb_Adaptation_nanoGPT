@@ -1,0 +1,93 @@
+step 0: train loss 3.8283, val loss 3.6840
+iter 0: loss 3.5976, time 47486.85ms, mfu -100.00%
+iter 1: loss 3.9301, time 2167.89ms, mfu -100.00%
+iter 2: loss 3.5605, time 2181.21ms, mfu -100.00%
+iter 3: loss 3.9039, time 2190.76ms, mfu -100.00%
+iter 4: loss 4.0105, time 2192.61ms, mfu -100.00%
+step 5: train loss 3.9010, val loss 3.7113
+iter 5: loss 3.9432, time 4950.55ms, mfu 21.84%
+iter 6: loss 3.9732, time 2204.78ms, mfu 24.56%
+iter 7: loss 3.8368, time 2205.03ms, mfu 27.01%
+iter 8: loss 4.2036, time 2207.46ms, mfu 29.20%
+iter 9: loss 4.0258, time 2205.12ms, mfu 31.19%
+step 10: train loss 4.9509, val loss 4.6502
+iter 10: loss 4.2143, time 4972.89ms, mfu 30.24%
+iter 11: loss 6.3173, time 2210.65ms, mfu 32.11%
+iter 12: loss 6.5338, time 2209.74ms, mfu 33.79%
+iter 13: loss 7.5906, time 2209.37ms, mfu 35.30%
+iter 14: loss 7.8809, time 2208.84ms, mfu 36.67%
+step 15: train loss 8.1297, val loss 7.9199
+iter 15: loss 8.3339, time 4974.76ms, mfu 35.18%
+iter 16: loss 8.5782, time 2210.80ms, mfu 36.55%
+iter 17: loss 8.3855, time 2209.91ms, mfu 37.79%
+iter 18: loss 8.7978, time 2209.93ms, mfu 38.90%
+iter 19: loss 8.7568, time 2208.64ms, mfu 39.90%
+step 20: train loss 8.9052, val loss 8.7734
+iter 20: loss 8.7672, time 4973.22ms, mfu 38.09%
+iter 21: loss 8.9311, time 2210.98ms, mfu 39.17%
+iter 22: loss 9.2072, time 2211.92ms, mfu 40.14%
+iter 23: loss 8.8739, time 2208.58ms, mfu 41.02%
+Traceback (most recent call last):
+  File "/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/train_hebb.py", line 332, in <module>
+    logits, loss = model(X, Y)
+                   ^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/model.py", line 1047, in forward
+    def forward(self, idx, targets=None):
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/aot_autograd.py", line 1100, in forward
+    return compiled_fn(full_args)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 308, in runtime_wrapper
+    all_outs = call_func_at_runtime_with_args(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 124, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+                            ^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 98, in g
+    return f(*args)
+           ^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 1525, in forward
+    fw_outs = call_func_at_runtime_with_args(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 124, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+                            ^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 488, in wrapper
+    return compiled_fn(runtime_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 667, in inner_fn
+    outs = compiled_fn(args)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_inductor/codecache.py", line 1478, in __call__
+    return self.current_callable(inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_inductor/utils.py", line 1977, in run
+    return model(new_inputs)
+           ^^^^^^^^^^^^^^^^^
+  File "/tmp/torchinductor_drozdovdan/ha/cha26aywxx6kb2deh2bxedzmqr5yeep2mbvyj2fcwdl2clejgsmh.py", line 3142, in call
+    buf619 = torch.ops.aten._scaled_dot_product_flash_attention.default(reinterpret_tensor(buf618, (1, 25, 1024, 64), (4915200, 64, 4800, 1), 0), reinterpret_tensor(buf618, (1, 25, 1024, 64), (4915200, 64, 4800, 1), 1600), reinterpret_tensor(buf618, (1, 25, 1024, 64), (4915200, 64, 4800, 1), 3200), 0.0, True, scale=0.125)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/drozdovdan/miniconda3/lib/python3.12/site-packages/torch/_ops.py", line 716, in __call__
+    return self._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

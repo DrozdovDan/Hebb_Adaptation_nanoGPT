@@ -714,7 +714,7 @@ class LoraGPT(nn.Module):
         return idx
 
 class SoftHebbianLinear(nn.Module):
-    def __init__(self, in_features: int, out_features: int, temperature: float=1.0, initialization: str='normal', bias: bool=False, hebbian_lr: float=0.01):
+    def __init__(self, in_features: int, out_features: int, temperature: float=1.0, bias: bool=False, hebbian_lr: float=0.01):
         """
         Initializes the Soft Hebbian Linear layer.
         
@@ -728,7 +728,6 @@ class SoftHebbianLinear(nn.Module):
         self.in_features = in_features
         self.out_features = out_features
         self.hebbian_lr = hebbian_lr
-        self.initialization = initialization
         self.temperature = temperature
         self.x = None
         self.u = None
@@ -739,21 +738,6 @@ class SoftHebbianLinear(nn.Module):
             self.bias = nn.Parameter(torch.Tensor(out_features))
         else:
             self.register_parameter('bias', None)
-        
-        self.reset_parameters()
-
-    def reset_parameters(self):
-        # Use Kaiming initialization for weights
-        if self.initialization == 'normal':
-            nn.init.normal_(self.weight)
-        elif self.initialization == 'zeros':
-            nn.init.zeros_(self.weight)
-
-        if self.bias is not None:
-            # Compute fan_in for bias initialization
-            fan_in, _ = nn.init._calculate_fan_in_and_fan_out(self.weight)
-            bound = 1 / math.sqrt(fan_in)
-            nn.init.uniform_(self.bias, -bound, bound)
             
     def forward(self, x):
         """
@@ -803,10 +787,21 @@ class HebbConfig:
     alpha: 32
     dropout: 0.0
     attn_modules: list[str]
+    lora_init: dict
+    lora_frozen_layers: list[str]
     hebb_lr: 0.01
-    initialization: 'normal'
     temperature: 1.0
     hebb_linears: list[str]
+
+def init_weight_by_name(weight, init='normal'):
+    if init == 'normal':
+        torch.nn.init.normal_(weight)
+    elif init == 'orthogonal':
+        torch.nn.init.orthogonal_(weight)
+    elif init == 'zeros':
+        torch.nn.init.zeros_(weight)
+    else:
+        torch.nn.init.normal_(weight)
 
 class HebbLoraLinear(nn.Module):
   def __init__(
@@ -818,8 +813,9 @@ class HebbLoraLinear(nn.Module):
     rank: int,
     alpha: float,
     dropout: float,
+    lora_init: dict,
+    lora_frozen_layers: list[str],
     hebb_lr: float,
-    initialization: str,
     temperature: float,
     hebb_linears: list[str]
   ):
@@ -830,20 +826,42 @@ class HebbLoraLinear(nn.Module):
     self.lora_a_hebb = False
     self.lora_b_hebb = False
 
+    self.linear.weight.requires_grad = False
+
     # These are the new LoRA params. In general rank << in_dim, out_dim
-    if 'lora_a' in hebb_linears:
-        self.lora_a = SoftHebbianLinear(in_dim, rank, temperature=temperature, initialization=initialization, bias=lora_bias, hebbian_lr=hebb_lr)
+    if isinstance(hebb_linears, list) and 'lora_a' in hebb_linears:
+        self.lora_a = SoftHebbianLinear(in_dim, rank, temperature=temperature, bias=lora_bias, hebbian_lr=hebb_lr)
         self.lora_a_hebb = True
     else:
         self.lora_a = nn.Linear(in_dim, rank, bias=lora_bias)
-        nn.init.normal_(self.lora_a.weight)
 
-    if 'lora_b' in hebb_linears:
-        self.lora_b = SoftHebbianLinear(rank, out_dim, temperature=temperature, initialization=initialization, bias=lora_bias, hebbian_lr=hebb_lr)
+    if isinstance(lora_init, dict) and 'lora_a' in lora_init.keys():
+        init_weight_by_name(self.lora_a.weight, lora_init['lora_a'])
+    else:
+        init_weight_by_name(self.lora_a.weight, 'normal')
+
+    if isinstance(lora_frozen_layers, list) and 'lora_a' in lora_frozen_layers:
+        self.lora_a.weight.requires_grad = False
+
+        if self.lora_a.bias:
+            self.lora_a.bias.requires_grad = False
+
+    if isinstance(hebb_linears, list) and 'lora_b' in hebb_linears:
+        self.lora_b = SoftHebbianLinear(rank, out_dim, temperature=temperature, bias=lora_bias, hebbian_lr=hebb_lr)
         self.lora_b_hebb = True
     else:
         self.lora_b = nn.Linear(rank, out_dim, bias=lora_bias)
-        nn.init.zeros_(self.lora_b.weight)
+    
+    if isinstance(lora_init, dict) and 'lora_b' in lora_init.keys():
+        init_weight_by_name(self.lora_b.weight, lora_init['lora_b'])
+    else:
+        init_weight_by_name(self.lora_b.weight, 'zeros')
+    
+    if isinstance(lora_frozen_layers, list) and 'lora_b' in lora_frozen_layers:
+        self.lora_b.weight.requires_grad = False
+
+        if self.lora_b.bias:
+            self.lora_b.bias.requires_grad = False
 
     # Rank and alpha are commonly-tuned hyperparameters
     self.rank = rank
@@ -851,11 +869,6 @@ class HebbLoraLinear(nn.Module):
 
     # Most implementations also include some dropout
     self.dropout = nn.Dropout(p=dropout)
-
-    # The original params are frozen, and only LoRA params are trainable.
-    self.linear.weight.requires_grad = False
-    self.lora_a.weight.requires_grad = True
-    self.lora_b.weight.requires_grad = True
 
   def forward(self, x: torch.Tensor) -> torch.Tensor:
     # This would be the output of the original model
@@ -895,8 +908,9 @@ class HebbAttention(nn.Module):
                                      rank=hebb_config.rank,
                                      alpha=hebb_config.alpha,
                                      dropout=hebb_config.dropout,
+                                     lora_init=hebb_config.lora_init,
+                                     lora_frozen_layers=hebb_config.lora_frozen_layers,
                                      hebb_lr=hebb_config.hebb_lr,
-                                     initialization=hebb_config.initialization,
                                      temperature=hebb_config.temperature,
                                      hebb_linears=hebb_config.hebb_linears)
             self.c_attn_hebb = True
@@ -911,8 +925,9 @@ class HebbAttention(nn.Module):
                                      rank=hebb_config.rank,
                                      alpha=hebb_config.alpha,
                                      dropout=hebb_config.dropout,
+                                     lora_init=hebb_config.lora_init,
+                                     lora_frozen_layers=hebb_config.lora_frozen_layers,
                                      hebb_lr=hebb_config.hebb_lr,
-                                     initialization=hebb_config.initialization,
                                      temperature=hebb_config.temperature,
                                      hebb_linears=hebb_config.hebb_linears)
             self.c_proj_hebb = True

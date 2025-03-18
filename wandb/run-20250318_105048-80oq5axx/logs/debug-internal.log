@@ -1,0 +1,11 @@
+{"time":"2025-03-18T10:50:48.989049302+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_105048-80oq5axx/logs/debug-core.log"}
+{"time":"2025-03-18T10:50:49.202975697+03:00","level":"INFO","msg":"created new stream","id":"80oq5axx"}
+{"time":"2025-03-18T10:50:49.203012037+03:00","level":"INFO","msg":"stream: started","id":"80oq5axx"}
+{"time":"2025-03-18T10:50:49.203104186+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"80oq5axx"}
+{"time":"2025-03-18T10:50:49.203191214+03:00","level":"INFO","msg":"handler: started","stream_id":"80oq5axx"}
+{"time":"2025-03-18T10:50:49.203127775+03:00","level":"INFO","msg":"sender: started","stream_id":"80oq5axx"}
+{"time":"2025-03-18T10:50:49.53437719+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T10:52:39.977935095+03:00","level":"INFO","msg":"stream: closing","id":"80oq5axx"}
+{"time":"2025-03-18T10:52:39.977975475+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T10:52:39.979012579+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T10:52:40.731918028+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}

@@ -1,0 +1,17 @@
+{"time":"2025-03-18T10:30:03.165539252+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_103002-bf5qdqr2/logs/debug-core.log"}
+{"time":"2025-03-18T10:30:03.373932771+03:00","level":"INFO","msg":"created new stream","id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:03.37401212+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:03.374091329+03:00","level":"INFO","msg":"sender: started","stream_id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:03.374186187+03:00","level":"INFO","msg":"stream: started","id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:03.374304895+03:00","level":"INFO","msg":"handler: started","stream_id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:03.710126303+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T10:30:03.922150467+03:00","level":"INFO","msg":"stream: closing","id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:03.922254375+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T10:30:03.923344489+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T10:30:05.174317748+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-18T10:30:05.409247153+03:00","level":"INFO","msg":"handler: closed","stream_id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:05.409267923+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:05.409283333+03:00","level":"INFO","msg":"sender: closed","stream_id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:05.409403661+03:00","level":"INFO","msg":"stream: closed","id":"bf5qdqr2"}
+{"time":"2025-03-18T10:30:05.409557928+03:00","level":"WARN","msg":"runwork: ignoring record after close","work":{"Record":{"RecordType":{"Request":{"RequestType":{"InternalMessages":{}}}},"control":{"local":true,"mailbox_slot":"9cd4sz17kxe7","connection_id":"127.0.0.1:51946"},"_info":{"stream_id":"bf5qdqr2"}}}}
+{"time":"2025-03-18T10:30:05.409888793+03:00","level":"WARN","msg":"runwork: ignoring record after close","work":{"Record":{"RecordType":{"Request":{"RequestType":{"NetworkStatus":{}}}},"control":{"local":true,"mailbox_slot":"h2yxkwh1nvew","connection_id":"127.0.0.1:51946"},"_info":{"stream_id":"bf5qdqr2"}}}}

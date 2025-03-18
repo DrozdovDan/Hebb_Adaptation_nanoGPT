@@ -77,15 +77,18 @@ device = 'cuda:1' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1' etc., or try 'mp
 dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16' # 'float32', 'bfloat16', or 'float16', the latter will auto implement a GradScaler
 compile = True # use PyTorch 2.0 to compile the model to be faster
 hebb_updates = False
+back_updates = True
 bias=False
 rank=8
 alpha=32
 hebb_dropout=0.1
 attn_modules=['c_attn']
 hebb_lr=0.045
-initialization='normal'
+lora_init={'lora_a' : 'normal', 'lora_b' : 'zeros'}
+lora_frozen_layers=[]
 temperature=1.0
 hebb_linears=['lora_a']
+
 # -----------------------------------------------------------------------------
 config_keys = [k for k,v in globals().items() if not k.startswith('_') and isinstance(v, (int, float, bool, str, list))]
 exec(open('configurator.py').read()) # overrides from command line or config file
@@ -165,9 +168,10 @@ hebb_args = dict(bias=bias,
         rank=rank,
         alpha=alpha,
         dropout=dropout,
+        lora_init=lora_init,
+        lora_frozen_layers=lora_frozen_layers,
         attn_modules=attn_modules,
         hebb_lr=hebb_lr,
-        initialization=initialization,
         temperature=temperature,
         hebb_linears=hebb_linears)
 
@@ -207,22 +211,12 @@ elif init_from.startswith('gpt2'):
     print(f"Initializing from OpenAI GPT-2 weights: {init_from}")
     # initialize from OpenAI GPT-2 weights
     override_args = dict(dropout=dropout)
-    hebb_config = HebbConfig(
-        bias=bias,
-        rank=rank,
-        alpha=alpha,
-        dropout=dropout,
-        attn_modules=attn_modules,
-        hebb_lr=hebb_lr,
-        initialization=initialization,
-        temperature=temperature,
-        hebb_linears=hebb_linears
-    )
+    hebb_config = HebbConfig(**hebb_args)
     model = HebbGPT.from_pretrained(init_from, hebb_config, override_args)
     # read off the created config params, so we can store them into checkpoint correctly
     for k in ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size']:
         model_args[k] = getattr(model.config, k)
-    for k in ['bias', 'rank', 'alpha', 'dropout', 'attn_modules', 'hebb_lr', 'initialization', 'temperature', 'hebb_linears']:
+    for k in ['bias', 'rank', 'alpha', 'dropout', 'attn_modules', 'hebb_lr', 'temperature', 'hebb_linears']:
         hebb_args[k] = getattr(model.hebb_config, k)
 # crop down the model block size if desired, using model surgery
 if block_size < model.config.block_size:
@@ -341,16 +335,18 @@ while True:
         # immediately async prefetch next batch while model is doing the forward pass on the GPU
         X, Y = get_batch('train')
         # backward pass, with gradient scaling if training in fp16
-        scaler.scale(loss).backward()
+        if back_updates:
+            scaler.scale(loss).backward()
     # clip the gradient
     if grad_clip != 0.0:
         scaler.unscale_(optimizer)
         torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
     # step the optimizer and scaler if training in fp16
-    scaler.step(optimizer)
-    scaler.update()
-    # flush the gradients as soon as we can, no need for this memory anymore
-    optimizer.zero_grad(set_to_none=True)
+    if back_updates:
+        scaler.step(optimizer)
+        scaler.update()
+        # flush the gradients as soon as we can, no need for this memory anymore
+        optimizer.zero_grad(set_to_none=True)
     if hebb_updates:
         model.hebb_update()
 

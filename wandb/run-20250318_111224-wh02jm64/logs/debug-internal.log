@@ -1,0 +1,15 @@
+{"time":"2025-03-18T11:12:24.778921915+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_111224-wh02jm64/logs/debug-core.log"}
+{"time":"2025-03-18T11:12:24.987311403+03:00","level":"INFO","msg":"created new stream","id":"wh02jm64"}
+{"time":"2025-03-18T11:12:24.987332353+03:00","level":"INFO","msg":"stream: started","id":"wh02jm64"}
+{"time":"2025-03-18T11:12:24.987421861+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"wh02jm64"}
+{"time":"2025-03-18T11:12:24.987452751+03:00","level":"INFO","msg":"sender: started","stream_id":"wh02jm64"}
+{"time":"2025-03-18T11:12:24.987825246+03:00","level":"INFO","msg":"handler: started","stream_id":"wh02jm64"}
+{"time":"2025-03-18T11:12:25.269865931+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T11:19:18.025619325+03:00","level":"INFO","msg":"stream: closing","id":"wh02jm64"}
+{"time":"2025-03-18T11:19:18.025692264+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T11:19:18.026470082+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T11:19:18.923075599+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-18T11:19:19.135572167+03:00","level":"INFO","msg":"handler: closed","stream_id":"wh02jm64"}
+{"time":"2025-03-18T11:19:19.135627306+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wh02jm64"}
+{"time":"2025-03-18T11:19:19.135646496+03:00","level":"INFO","msg":"sender: closed","stream_id":"wh02jm64"}
+{"time":"2025-03-18T11:19:19.137609166+03:00","level":"INFO","msg":"stream: closed","id":"wh02jm64"}

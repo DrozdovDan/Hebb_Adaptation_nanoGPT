@@ -1,0 +1,15 @@
+{"time":"2025-03-18T11:22:09.73780947+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_112209-24s4go2z/logs/debug-core.log"}
+{"time":"2025-03-18T11:22:09.948386996+03:00","level":"INFO","msg":"created new stream","id":"24s4go2z"}
+{"time":"2025-03-18T11:22:09.948425055+03:00","level":"INFO","msg":"stream: started","id":"24s4go2z"}
+{"time":"2025-03-18T11:22:09.948500414+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"24s4go2z"}
+{"time":"2025-03-18T11:22:09.948577623+03:00","level":"INFO","msg":"handler: started","stream_id":"24s4go2z"}
+{"time":"2025-03-18T11:22:09.948532223+03:00","level":"INFO","msg":"sender: started","stream_id":"24s4go2z"}
+{"time":"2025-03-18T11:22:10.245093323+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T11:28:44.841595416+03:00","level":"INFO","msg":"stream: closing","id":"24s4go2z"}
+{"time":"2025-03-18T11:28:44.841638125+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T11:28:44.84269313+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T11:28:45.732177122+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-18T11:28:45.985230158+03:00","level":"INFO","msg":"handler: closed","stream_id":"24s4go2z"}
+{"time":"2025-03-18T11:28:45.985296787+03:00","level":"INFO","msg":"sender: closed","stream_id":"24s4go2z"}
+{"time":"2025-03-18T11:28:45.985279577+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"24s4go2z"}
+{"time":"2025-03-18T11:28:45.985446085+03:00","level":"INFO","msg":"stream: closed","id":"24s4go2z"}

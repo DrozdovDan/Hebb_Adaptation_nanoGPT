@@ -1,0 +1,81 @@
+{
+  "os": "Linux-6.1.0-30-amd64-x86_64-with-glibc2.36",
+  "python": "CPython 3.12.2",
+  "startedAt": "2025-03-18T08:12:24.777894Z",
+  "args": [
+    "config/finetune_shakespeare_hebb_a.py"
+  ],
+  "program": "/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/train_hebb.py",
+  "codePath": "train_hebb.py",
+  "git": {
+    "remote": "https://github.com/DrozdovDan/Hebb_Adaptation_nanoGPT",
+    "commit": "255458571f90abff3f18028e457d39da0b6c3e9c"
+  },
+  "email": "daniil.drozdovjr@gmail.com",
+  "root": "/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT",
+  "host": "butch",
+  "executable": "/home/drozdovdan/miniconda3/bin/python",
+  "codePathLocal": "train_hebb.py",
+  "cpu_count": 128,
+  "cpu_count_logical": 256,
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "gpu_count": 7,
+  "disk": {
+    "/": {
+      "total": "343360233472",
+      "used": "29625991168"
+    }
+  },
+  "memory": {
+    "total": "1081991651328"
+  },
+  "cpu": {
+    "count": 128,
+    "countLogical": 256
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "memoryTotal": "42949672960",
+      "cudaCores": 6912,
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.7"
+}

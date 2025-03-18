@@ -1,0 +1,23 @@
+2025-03-18 11:12:24,563 INFO    MainThread:3783644 [wandb_setup.py:_flush():68] Current SDK version is 0.19.4
+2025-03-18 11:12:24,563 INFO    MainThread:3783644 [wandb_setup.py:_flush():68] Configure stats pid to 3783644
+2025-03-18 11:12:24,563 INFO    MainThread:3783644 [wandb_setup.py:_flush():68] Loading settings from /home/drozdovdan/.config/wandb/settings
+2025-03-18 11:12:24,563 INFO    MainThread:3783644 [wandb_setup.py:_flush():68] Loading settings from /home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/settings
+2025-03-18 11:12:24,563 INFO    MainThread:3783644 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-03-18 11:12:24,564 INFO    MainThread:3783644 [wandb_init.py:setup_run_log_directory():624] Logging user logs to /home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_111224-wh02jm64/logs/debug.log
+2025-03-18 11:12:24,564 INFO    MainThread:3783644 [wandb_init.py:setup_run_log_directory():625] Logging internal logs to /home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_111224-wh02jm64/logs/debug-internal.log
+2025-03-18 11:12:24,564 INFO    MainThread:3783644 [wandb_init.py:init():743] calling init triggers
+2025-03-18 11:12:24,564 INFO    MainThread:3783644 [wandb_init.py:init():748] wandb.init called with sweep_config: {}
+config: {'out_dir': 'out-shakespeare-a', 'eval_interval': 5, 'log_interval': 1, 'eval_iters': 40, 'eval_only': False, 'always_save_checkpoint': True, 'init_from': 'gpt2-xl', 'wandb_log': True, 'wandb_project': 'shakespeare', 'wandb_run_name': 'ft-1742285525.3351989', 'dataset': 'shakespeare', 'gradient_accumulation_steps': 32, 'batch_size': 1, 'block_size': 1024, 'n_layer': 12, 'n_head': 12, 'n_embd': 768, 'dropout': 0.0, 'bias': False, 'learning_rate': 3e-05, 'max_iters': 40, 'weight_decay': 0.1, 'beta1': 0.9, 'beta2': 0.95, 'grad_clip': 1.0, 'decay_lr': False, 'warmup_iters': 2000, 'lr_decay_iters': 600000, 'min_lr': 6e-05, 'backend': 'nccl', 'device': 'cuda:1', 'dtype': 'bfloat16', 'compile': True, 'hebb_updates': True, 'rank': 8, 'alpha': 32, 'hebb_dropout': 0.1, 'attn_modules': ['c_attn'], 'hebb_lr': 0.045, 'lora_frozen_layers': [], 'temperature': 1.0, 'hebb_linears': ['lora_a']}
+2025-03-18 11:12:24,564 INFO    MainThread:3783644 [wandb_init.py:init():776] starting backend
+2025-03-18 11:12:24,770 INFO    MainThread:3783644 [wandb_init.py:init():780] sending inform_init request
+2025-03-18 11:12:24,776 INFO    MainThread:3783644 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-03-18 11:12:24,777 INFO    MainThread:3783644 [wandb_init.py:init():795] backend started and connected
+2025-03-18 11:12:24,780 INFO    MainThread:3783644 [wandb_init.py:init():888] updated telemetry
+2025-03-18 11:12:24,789 INFO    MainThread:3783644 [wandb_init.py:init():915] communicating run to backend with 90.0 second timeout
+2025-03-18 11:12:25,265 INFO    MainThread:3783644 [wandb_init.py:init():967] starting run threads in backend
+2025-03-18 11:12:25,453 INFO    MainThread:3783644 [wandb_run.py:_console_start():2409] atexit reg
+2025-03-18 11:12:25,454 INFO    MainThread:3783644 [wandb_run.py:_redirect():2259] redirect: wrap_raw
+2025-03-18 11:12:25,454 INFO    MainThread:3783644 [wandb_run.py:_redirect():2324] Wrapping output streams.
+2025-03-18 11:12:25,454 INFO    MainThread:3783644 [wandb_run.py:_redirect():2349] Redirects installed.
+2025-03-18 11:12:25,456 INFO    MainThread:3783644 [wandb_init.py:init():1009] run started, returning control to user process
+2025-03-18 11:19:18,025 WARNING MsgRouterThr:3783644 [router.py:message_loop():75] message_loop has been closed

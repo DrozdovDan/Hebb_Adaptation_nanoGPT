@@ -1,0 +1,124 @@
+_wandb:
+    value:
+        cli_version: 0.19.4
+        m: []
+        python_version: 3.12.2
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 98
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 98
+            "3":
+                - 13
+                - 16
+                - 23
+                - 55
+            "4": 3.12.2
+            "5": 0.19.4
+            "6": 4.49.0
+            "8":
+                - 5
+            "12": 0.19.4
+            "13": linux-x86_64
+alpha:
+    value: 32
+always_save_checkpoint:
+    value: false
+attn_modules:
+    value:
+        - c_attn
+backend:
+    value: nccl
+batch_size:
+    value: 1
+beta1:
+    value: 0.9
+beta2:
+    value: 0.95
+bias:
+    value: false
+block_size:
+    value: 1024
+compile:
+    value: true
+dataset:
+    value: shakespeare
+decay_lr:
+    value: false
+device:
+    value: cuda:1
+dropout:
+    value: 0
+dtype:
+    value: bfloat16
+eval_interval:
+    value: 5
+eval_iters:
+    value: 40
+eval_only:
+    value: false
+grad_clip:
+    value: 1
+gradient_accumulation_steps:
+    value: 32
+hebb_dropout:
+    value: 0.1
+hebb_linears:
+    value:
+        - lora_a
+hebb_lr:
+    value: 0.045
+hebb_updates:
+    value: true
+init_from:
+    value: gpt2-xl
+learning_rate:
+    value: 3e-05
+log_interval:
+    value: 1
+lora_frozen_layers:
+    value: []
+lr_decay_iters:
+    value: 600000
+max_iters:
+    value: 40
+min_lr:
+    value: 6e-05
+n_embd:
+    value: 768
+n_head:
+    value: 12
+n_layer:
+    value: 12
+out_dir:
+    value: out-shakespeare-a
+rank:
+    value: 8
+temperature:
+    value: 1
+wandb_log:
+    value: true
+wandb_project:
+    value: shakespeare
+wandb_run_name:
+    value: ft-1742282950.0636387
+warmup_iters:
+    value: 2000
+weight_decay:
+    value: 0.1

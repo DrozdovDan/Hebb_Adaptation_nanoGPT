@@ -1,0 +1,15 @@
+{"time":"2025-03-18T11:47:24.927676931+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/drozdovdan/Hebb_Adaptation/Hebb_Adaptation_nanoGPT/wandb/run-20250318_114724-j5np0pw4/logs/debug-core.log"}
+{"time":"2025-03-18T11:47:25.139858583+03:00","level":"INFO","msg":"created new stream","id":"j5np0pw4"}
+{"time":"2025-03-18T11:47:25.139892662+03:00","level":"INFO","msg":"stream: started","id":"j5np0pw4"}
+{"time":"2025-03-18T11:47:25.139990561+03:00","level":"INFO","msg":"handler: started","stream_id":"j5np0pw4"}
+{"time":"2025-03-18T11:47:25.139973621+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"j5np0pw4"}
+{"time":"2025-03-18T11:47:25.140410525+03:00","level":"INFO","msg":"sender: started","stream_id":"j5np0pw4"}
+{"time":"2025-03-18T11:47:25.434969774+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T11:52:07.326588059+03:00","level":"INFO","msg":"stream: closing","id":"j5np0pw4"}
+{"time":"2025-03-18T11:52:07.326634798+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T11:52:07.327499166+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T11:52:08.234956842+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-18T11:52:08.463195776+03:00","level":"INFO","msg":"handler: closed","stream_id":"j5np0pw4"}
+{"time":"2025-03-18T11:52:08.463250635+03:00","level":"INFO","msg":"sender: closed","stream_id":"j5np0pw4"}
+{"time":"2025-03-18T11:52:08.463244055+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"j5np0pw4"}
+{"time":"2025-03-18T11:52:08.463366093+03:00","level":"INFO","msg":"stream: closed","id":"j5np0pw4"}
